@@ -1,69 +1,66 @@
 import style from "./LatestBlogs.module.css";
 import OrangeButton from "../OrangeButton/OrangeButton.tsx";
-import building from "../../assets/building.png";
 import Card from "../Card/Card.tsx";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 
 function LatestBlogs() {
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState([]);
 
 
-
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            const apiKey: string = 'pj11daaQRz7zUIH56B9Z';
+            try {
+                setError(false);
+                setLoading(true);
+                const result = await axios.get('https://frontend-case-api.sbdev.nl/api/posts', {
+                    headers: {
+                        'token': `${apiKey}`
+                    }
+                });
+                setData(result.data.data)
+            } catch (e: string) {
+                console.error(e);
+                console.error("Error status:", e.response.status);
+                console.error("Error data:", e.response.data);
+                setError(true);
+            } finally {
+                setLoading(false);
+            }
+        }
+        void fetchBlogs();
+    }, []);
+    console.log(data);
+// sorting data on Date
+    const sortedData = [...data].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+// getting the last 4 blogs
+    const latestBlogs = sortedData.slice(0, 4);
 
     return (
+        <>
+            {loading ?
+                <p>Loading...</p>
+                :
+                <div className={style.container}>
+                    <div className={style.container_cards}>
+                        {latestBlogs.map((blog) => (
+                            <Card
+                                blog={blog}
+                                key={blog.id}/>
+                        ))}
 
-        <div className={style.container}>
-            <div className={style.container_cards}>
-
-
-                {/*{allBlogs.map((blog) => (*/}
-                {/*    <div className={style.container_cards__item}>*/}
-                {/*        <figure>*/}
-                {/*            /!*<img src={blog.image} alt="This is a building"/>*!/*/}
-                {/*        </figure>*/}
-                {/*        <div className={style.container_cards__text}>*/}
-                {/*            <h2>blog.header</h2>*/}
-                {/*            <p className={style.container_card__text_info}>blog.text</p>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*))}*/}
-
-                <Card/>
-                <div className={style.container_cards__item}>
-                    <figure>
-                        <img src={building} alt="This is a building"/>
-                    </figure>
-                    <div className={style.container_cards__text}>
-                        <h2>Heading</h2>
-                        <p className={style.container_card__text_info}>Lorem ipsum dolor sit amet, consectetur
-                            adipisicing elit. Exercitationem magnam nam repellendus sunt vero voluptatum!</p>
+                    </div>
+                    <div className={style.container_btn}>
+                        <OrangeButton text="Laad meer" type="button"/>
                     </div>
                 </div>
-                <div className={style.container_cards__item}>
-                    <figure>
-                        <img src={building} alt="This is a building"/>
-                    </figure>
-                    <div className={style.container_cards__text}>
-                        <h2>Heading</h2>
-                        <p className={style.container_card__text_info}>Lorem ipsum dolor sit amet, consectetur
-                            adipisicing elit. Exercitationem magnam nam repellendus sunt vero voluptatum!</p>
-                    </div>
-                </div>
-                <div className={style.container_cards__item}>
-                    <figure>
-                        <img src={building} alt="This is a building"/>
-                    </figure>
-                    <div className={style.container_cards__text}>
-                        <h2>Heading</h2>
-                        <p className={style.container_card__text_info}>Lorem ipsum dolor sit amet, consectetur
-                            adipisicing elit. Exercitationem magnam nam repellendus sunt vero voluptatum!</p>
-                    </div>
-                </div>
-            </div>
-            <div className={style.container_btn}>
-                <OrangeButton text="Laad meer" type="button"/>
-            </div>
-        </div>
-
+            }
+            {error && <p> Something went wrong. Try again. </p>}
+        </>
     )
 }
 

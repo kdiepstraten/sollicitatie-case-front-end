@@ -32,6 +32,15 @@ input::placeholder {
     font-size: 12px;
     line-height: 15px;
 }
+select {
+    width: 403px;
+    height: 39px;
+    background-color: #fafafa;
+    outline: none;
+    border: none;
+    margin: 5px 0;
+}
+
 textarea {
     width: 403px;
     height: 214px;
