@@ -1,8 +1,8 @@
 import style from './Card.module.css';
 
 function Card({blog, id}){
-
-    return(
+    console.log(blog);
+    return (
         <>
             <div className={style.container_cards} key={id}>
                 <figure>

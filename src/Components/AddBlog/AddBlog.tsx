@@ -8,8 +8,9 @@ function AddBlog() {
     const {register} = useForm();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    const apiKey: string = 'pj11daaQRz7zUIH56B9Z';
+
     async function onSubmit(data){
+        const apiKey: string = 'pj11daaQRz7zUIH56B9Z';
         try {
             setError(false);
             setLoading(true);
@@ -34,7 +35,10 @@ function AddBlog() {
     return (
         <>
             <div className={style.container}>
-                <form onSubmit={() => handleSubmit(onSubmit)} className={style.form}>
+                <form
+                    className={style.form}
+                    onSubmit={() => handleSubmit(onSubmit)}
+                    >
                     <h2>Plaats een blog bericht</h2>
                     <label htmlFor="title">Berichtnaam
                         <input
@@ -50,8 +54,13 @@ function AddBlog() {
 
                     <label htmlFor="category">Categorie
                         <select
-                            id="category"
-                            {...register("category_id")}>
+                            id="category_id"
+                            {...register("category_id", {
+                                required: {
+                                    value: true,
+                                    message: "Categorie is verplicht"
+                                }
+                            })}>
                             <option className={style.form_option} value="" >Geen categorie</option>
                             <option value="1">Tech</option>
                             <option value="2">Nieuws</option>
@@ -63,7 +72,12 @@ function AddBlog() {
                         <input
                             type="file"
                             id="file"
-                            {...register("file", )}/></label>
+                            {...register("file", {
+                                required: {
+                                    value: true,
+                                    message: "File is verplicht"
+                                }
+                            })}/></label>
 
                     <label htmlFor="content">Bericht
                         <textarea

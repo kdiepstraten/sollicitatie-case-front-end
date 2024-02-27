@@ -9,7 +9,8 @@ function LatestBlogs() {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const blogsPerPage = 4;
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -38,7 +39,17 @@ function LatestBlogs() {
 // sorting data on Date
     const sortedData = [...data].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 // getting the last 4 blogs
-    const latestBlogs = sortedData.slice(0, 4);
+    const latestBlogs = sortedData.slice(0, blogsPerPage * currentPage);
+
+    const loadMoreBlogs = () => {
+      const startIndex = blogsPerPage * currentPage;
+      const endIndex = startIndex + blogsPerPage;
+
+      if (endIndex < sortedData.length) {
+          const nextBlogs = sortedData.slice(startIndex, endIndex);
+          setData(nextBlogs);
+      }
+    }
 
     return (
         <>
@@ -55,7 +66,10 @@ function LatestBlogs() {
 
                     </div>
                     <div className={style.container_btn}>
-                        <OrangeButton text="Laad meer" type="button"/>
+                        <OrangeButton
+                            text="Laad meer"
+                            type="button"
+                            onClick={loadMoreBlogs}/>
                     </div>
                 </div>
             }
