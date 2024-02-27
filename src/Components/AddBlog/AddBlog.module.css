@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 451px;
+    height: 659px;
+    margin: 64px 0;
+    background-color: #fff;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+   justify-content: space-evenly;
+    width: 403px;
+    height: 611px;
+}
+.form > label {
+    font-size: 12px;
+    line-height: 13px;
+    color: #404040;
+}
+input {
+    width: 403px;
+    height: 39px;
+    background-color: #fafafa;
+    outline: none;
+    border: none;
+    margin: 5px 0;
+}
+input::placeholder {
+    color: #c5c5c5;
+    font-size: 12px;
+    line-height: 15px;
+}
+textarea {
+    width: 403px;
+    height: 214px;
+    border: none;
+    background-color: #fafafa;
+}
+.btn {
+    align-self: center;
+}

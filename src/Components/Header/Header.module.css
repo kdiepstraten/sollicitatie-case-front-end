@@ -1,0 +1,53 @@
+.container {
+    width: 1440px;
+    height: 208px;
+    background-image: url("../../assets/Header.png");
+    background-position: center;
+    position: relative;
+}
+
+.container_styling {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    align-items: center;
+    width: 1440px;
+}
+
+.container_navigation {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    width: 123px;
+    height: 30px;
+}
+
+.default {
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 21px;
+    font-size: 18px;
+    margin: 0 5px;
+    width: 52px;
+    height: 30px;
+}
+
+.active {
+    text-decoration: none;
+    color: #ffffff;
+    line-height: 21px;
+    font-size: 18px;
+    margin: 0 5px;
+    width: 52px;
+    height: 30px;
+    border-bottom: 2px solid #E95E30;
+}
+
+figure > img {
+    width: 100%;
+}
+
+figure {
+    width: 240px;
+    height: 57px;
+}
