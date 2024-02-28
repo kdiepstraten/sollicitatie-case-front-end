@@ -2,7 +2,7 @@
     width: 202px;
     height: 39px;
     border-radius: 20px;
-    background-color: #f27623;
+    background-color: var(--btn_color);
     color: #ffffff;
     font-weight: bold;
     font-size: 12px;

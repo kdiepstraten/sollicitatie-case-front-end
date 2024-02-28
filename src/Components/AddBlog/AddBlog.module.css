@@ -5,7 +5,7 @@
     width: 451px;
     height: 659px;
     margin: 64px 0;
-    background-color: #fff;
+    background-color: var(--page_background);
 }
 .form {
     display: flex;
@@ -17,12 +17,12 @@
 .form > label {
     font-size: 12px;
     line-height: 13px;
-    color: #404040;
+    color: var(--text_color);
 }
 input {
     width: 403px;
     height: 39px;
-    background-color: #fafafa;
+    background-color: var(--input_background);
     outline: none;
     border: none;
     margin: 5px 0;
@@ -47,6 +47,4 @@ textarea {
     border: none;
     background-color: #fafafa;
 }
-.btn {
-    align-self: center;
-}
+

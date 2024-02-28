@@ -20,10 +20,11 @@
     list-style: none;
     width: 123px;
     height: 30px;
+    transform: translateX(112px) translateY(18px);
 }
 
 .default {
-    color: #ffffff;
+    color: var(--page_background);
     text-decoration: none;
     line-height: 21px;
     font-size: 18px;
@@ -34,13 +35,13 @@
 
 .active {
     text-decoration: none;
-    color: #ffffff;
+    color: var(--page_background);
     line-height: 21px;
     font-size: 18px;
     margin: 0 5px;
     width: 52px;
     height: 30px;
-    border-bottom: 2px solid #E95E30;
+    border-bottom: 2px solid var(--border_bottom);
 }
 
 figure > img {
@@ -50,4 +51,7 @@ figure > img {
 figure {
     width: 240px;
     height: 57px;
+}
+.logo {
+    transform: translateX(-108px) translateY(29px);
 }

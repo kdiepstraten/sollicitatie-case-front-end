@@ -35,7 +35,7 @@ function LatestBlogs() {
         }
         void fetchBlogs();
     }, []);
-    console.log(data);
+
 // sorting data on Date
     const sortedData = [...data].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 // getting the last 4 blogs

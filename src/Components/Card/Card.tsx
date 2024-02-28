@@ -1,7 +1,6 @@
 import style from './Card.module.css';
 
 function Card({blog, id}){
-    console.log(blog);
     return (
         <>
             <div className={style.container_cards} key={id}>

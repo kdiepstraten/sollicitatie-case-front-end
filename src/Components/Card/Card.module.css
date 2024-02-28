@@ -3,6 +3,7 @@
     height: 217px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /*margin: 5px;*/
 }
 .container_cards__text {
     margin: 16px;
