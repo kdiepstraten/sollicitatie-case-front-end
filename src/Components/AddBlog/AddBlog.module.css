@@ -28,7 +28,7 @@ input {
     margin: 5px 0;
 }
 input::placeholder {
-    color: #c5c5c5;
+    color: var(--footer_text);
     font-size: 12px;
     line-height: 15px;
 }
