@@ -42,13 +42,13 @@ function LatestBlogs() {
     const latestBlogs = sortedData.slice(0, blogsPerPage * currentPage);
 
     const loadMoreBlogs = () => {
-      const startIndex = blogsPerPage * currentPage;
-      const endIndex = startIndex + blogsPerPage;
+        const startIndex = blogsPerPage * currentPage;
+        const endIndex = startIndex + blogsPerPage;
 
-      if (endIndex < sortedData.length) {
-          const nextBlogs = sortedData.slice(startIndex, endIndex);
-          setData(nextBlogs);
-      }
+        if (endIndex < sortedData.length) {
+            const nextBlogs = sortedData.slice(startIndex, endIndex);
+            setData(nextBlogs);
+        }
     }
 
     return (
@@ -65,12 +65,12 @@ function LatestBlogs() {
                         ))}
 
                     </div>
-                    <div className={style.container_btn}>
-                        <OrangeButton
-                            text="Laad meer"
-                            type="button"
-                            onClick={loadMoreBlogs}/>
-                    </div>
+
+                    <OrangeButton
+                        text="Laad meer"
+                        type="button"
+                        onClick={loadMoreBlogs}/>
+
                 </div>
             }
             {error && <p> Something went wrong. Try again. </p>}

@@ -3,7 +3,7 @@
     height: 39px;
     border-radius: 20px;
     background-color: var(--btn_color);
-    color: #ffffff;
+    color: var(--page_background);
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;

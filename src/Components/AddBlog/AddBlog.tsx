@@ -10,7 +10,6 @@ function AddBlog() {
     const [error, setError] = useState(false);
 
     async function onSubmit(data) {
-        console.log("Form submitted!", data);
         const apiKey: string = 'pj11daaQRz7zUIH56B9Z';
         try {
             setError(false);
@@ -28,8 +27,6 @@ function AddBlog() {
                     'token': `${apiKey}`
                 }
             });
-            console.log("Status:", result.status);
-            console.log("Data:", result.data);
         } catch (e: string) {
             console.error(e);
             // console.error("Error status:", e.response.status);
@@ -43,69 +40,73 @@ function AddBlog() {
 
     return (
         <>
-            <div className={style.container}>
-                <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    className={style.form}>
-                    <h2>Plaats een blog bericht</h2>
-                    <label htmlFor="title">Berichtnaam
-                        <input
-                            type="text"
-                            id="title"
-                            placeholder="Geen titel"
-                            {...register("title", {
-                                required: {
-                                    value: true,
-                                    message: "Naam is verplicht"
-                                }
-                            })}/></label>
+            {
+                loading ? <p>Loading...</p>
+                    :
 
-                    <label htmlFor="category">Categorie
-                        <select
-                            id="category_id"
-                            {...register("category_id", {
-                                required: {
-                                    value: true,
-                                    message: "Categorie is verplicht"
-                                }
-                            })}>
-                            <option className={style.form_option} value="">Geen categorie</option>
-                            <option value="1">Tech</option>
-                            <option value="2">Nieuws</option>
-                            <option value="3">Sports</option>
-                            <option value="4">Lokaal</option>
-                        </select></label>
+                    <div className={style.container}>
+                        <form
+                            onSubmit={handleSubmit(onSubmit)}
+                            className={style.form}>
+                            <h2>Plaats een blog bericht</h2>
+                            <label htmlFor="title">Berichtnaam
+                                <input
+                                    type="text"
+                                    id="title"
+                                    placeholder="Geen titel"
+                                    {...register("title", {
+                                        required: {
+                                            value: true,
+                                            message: "Naam is verplicht"
+                                        }
+                                    })}/></label>
 
-                    <label htmlFor="image"> Header afbeelding
-                        <input
-                            type="file"
-                            id="image"
-                            {...register("image", {
-                                required: {
-                                    value: true,
-                                    message: "File is verplicht"
-                                }
-                            })}/></label>
+                            <label htmlFor="category">Categorie
+                                <select
+                                    id="category_id"
+                                    {...register("category_id", {
+                                        required: {
+                                            value: true,
+                                            message: "Categorie is verplicht"
+                                        }
+                                    })}>
+                                    <option className={style.form_option} value="">Geen categorie</option>
+                                    <option value="1">Tech</option>
+                                    <option value="2">Nieuws</option>
+                                    <option value="3">Sports</option>
+                                    <option value="4">Lokaal</option>
+                                </select></label>
 
-                    <label htmlFor="content">Bericht
-                        <textarea
-                            id="content"
-                            {...register("content", {
-                                required: {
-                                    value: true,
-                                    message: "Bericht is verplicht"
-                                }
-                            })}/></label>
+                            <label htmlFor="image"> Header afbeelding
+                                <input
+                                    type="file"
+                                    id="image"
+                                    {...register("image", {
+                                        required: {
+                                            value: true,
+                                            message: "File is verplicht"
+                                        }
+                                    })}/></label>
 
+                            <label htmlFor="content">Bericht
+                                <textarea
+                                    id="content"
+                                    {...register("content", {
+                                        required: {
+                                            value: true,
+                                            message: "Bericht is verplicht"
+                                        }
+                                    })}/></label>
 
-                    <OrangeButton
-                        text="Bericht aanmaken"
-                        type="submit"
-                      />
+                            <OrangeButton
+                                text="Bericht aanmaken"
+                                type="submit"
+                            />
 
-
-                </form>
-            </div>
+                        </form>
+                    </div>
+            }
+            {error && <p> Something went wrong. Try again. </p>}
         </>
     )
 }

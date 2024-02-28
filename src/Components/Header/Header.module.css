@@ -20,7 +20,7 @@
     list-style: none;
     width: 123px;
     height: 30px;
-    transform: translateX(112px) translateY(18px);
+    transform: var(--link_styling);
 }
 
 .default {
@@ -53,5 +53,5 @@ figure {
     height: 57px;
 }
 .logo {
-    transform: translateX(-108px) translateY(29px);
+    transform: var(--logo_styling);
 }

@@ -39,7 +39,7 @@ function Blog() {
     const handlePageClick = (selectedPage) => {
         setCurrentPage(selectedPage.selected);
     }
-    // console.log(blog);
+
     const startIndex = currentPage * blogsPerPage;
     const endIndex = startIndex + blogsPerPage;
     const currentBlogs = blog.slice(startIndex, endIndex);
@@ -65,8 +65,8 @@ function Blog() {
                             previousLabel="< Previous"
                             containerClassName={style.pagination}
                             activeClassName={style.active}
-                            />
-                        )}
+                        />
+                    )}
                 </div>
             }
             {error && <p> Something went wrong. Try again. </p>}

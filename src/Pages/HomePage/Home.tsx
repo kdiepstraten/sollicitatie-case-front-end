@@ -6,15 +6,12 @@ import LatestBlogs from "../../Components/LatestBlogs/LatestBlogs.tsx";
 function Home() {
 
     return (
-        <>
-            <div className={style.container}>
+        <div className={style.container}>
             <div className={style.wrapper}>
                 <AddBlog/>
                 <LatestBlogs/>
             </div>
-            </div>
-        </>
-
+        </div>
     )
 }
 
