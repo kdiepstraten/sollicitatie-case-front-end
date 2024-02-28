@@ -8,7 +8,7 @@ function Header() {
             <div className={style.container}>
                 <ul className={style.container_styling}>
                     <li>
-                        <figure><img src={logo} alt="Logo Social Brothers"/></figure>
+                        <figure className={style.logo}><img src={logo} alt="Logo Social Brothers"/></figure>
                     </li>
                     <div className={style.container_navigation}>
                         <li><NavLink
